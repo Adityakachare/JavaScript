@@ -85,4 +85,3 @@ console.log(typeof (1 + 2 + "2")); //32 => string*/
 /* console.log(+true); //1
 console.log(+false); //0
 console.log(+""); //0 */
-
