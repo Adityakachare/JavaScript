@@ -35,3 +35,7 @@ let myObj = {
 const myFunction = function(){
     console.log("This is a function")
 }
+
+
+/**********************MEMORY MANAGEMENT***************************/
+// 2 types: Stack(Primitive) and Heap(Non-Primitive)
