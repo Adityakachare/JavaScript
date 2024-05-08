@@ -4,7 +4,6 @@
 //The constructor method used to make the object is as follows:
 //Object.create
 
-
 //Object literals
 const JsUser = {
     name:"Aditya",
