@@ -84,3 +84,19 @@ console.log(Object.entries(tinderUser)); //[ [ 'id', 'User1' ], [ 'name', 'Adity
 
 console.log(tinderUser.hasOwnProperty("isLoggedIn")); //true
 //Will return boolean value after checking if the property passed as the argument is present in the object or not
+
+
+// Destructuring Objects (Important topic as it will be frequently used)
+//To make the code look clean and readable the following syntax can be followed
+const course = {
+    courseName: "JAVASCRIPT",
+    price: 100,
+    courseInstructor: "Aditya"
+}
+const {courseInstructor} = course;
+console.log(courseInstructor); //Aditya
+//We can also rename the property of the object directly in the syntax itself
+const {courseInstructor: cInst} = course;
+console.log(cInst); //Aditya
+
+
