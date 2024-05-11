@@ -38,3 +38,52 @@ function loginUserMessage(username){
 
 console.log(loginUserMessage("Aditya")); //Aditya just logged in!
 console.log(loginUserMessage()); //undefined just logged in!
+
+
+//Suppose there is an E-Comm website and for the Cart section there is a function which accepts a single parameter but the user adds multiple items, to avoid this issue we can use the REST operator.
+//...: this is the spread and rest operator, it depends on the usecase of the operator what we call it
+function calculateCartPrice(num1){
+    return num1
+}
+console.log(calculateCartPrice(200, 300, 500))
+//In the above case only 200 will be returned and other values will be ignored
+
+function calculateCartPrice1(...num1){
+    return num1
+}
+console.log(calculateCartPrice1(200, 300, 500))
+//This will return an array of all the values passed, we can perform any operation on the array, for this example we can add the elements of the array to calculate the total price of the user cart
+
+//One more way to write the above logic:
+function calculateCartPrice2(val1, val2, ...num1){
+    return num1
+}
+console.log(calculateCartPrice2(200, 300, 400, 500, 600)) //[ 400, 500, 600 ]
+//val1 and val2 will have values 200 and 300 respectively while the remaining values will be stored in the num1 variable
+
+//Passing objects in Functions:
+const newUser = {
+    username: "Aditya",
+    price: 900
+}
+function handleObjects(newObject){
+    console.log(`Username is: ${newObject.username} and the price is: ${newObject.price}.`);
+}
+handleObjects(newUser)
+
+//We can also pass the object directly without creating it separately
+handleObjects({
+    username: "John",
+    price: 1200
+})
+
+//The funtion will handle any kind of object which is being passed to it
+
+//Passing arrays in Function
+const newArray = [200, 300, 400, 500]
+function returnArray(getArray){
+    return getArray[2]
+}
+console.log(returnArray(newArray));
+//We can do the same like we did for objects, we can directly pass the array without creating it separately
+
