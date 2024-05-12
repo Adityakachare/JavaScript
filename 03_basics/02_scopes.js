@@ -21,3 +21,40 @@ if (true) {
 
 console.log(abc); // Outputs: 200 (the outer 'abc' variable is not affected)
 
+//Nested Scope
+function one(){
+    const username = "Aditya"
+
+    function two(){
+        const website = "YouTube"
+        console.log(username);
+    }
+    //console.log(website); //This line will give an error as function one() cannot access the varaibles of the inner function two()
+    two();
+}
+one()
+
+//Same concept using if else:
+if(true){
+    const firstName = "Aditya"
+    if(true){
+        const lastName = " Kachare"
+        console.log(firstName + lastName);
+    }
+    //console.log(lastName); //Not accessible
+}
+//console.log(firstName); //Not accessible
+
+//INTERESTING CONCEPT
+
+function addOne(num){
+    return num + 1
+}
+addOne(5)
+
+const addTwo = function(num){
+    return num + 2
+}
+addTwo(5)
+
+// HOISTING: If we call addOne() before the function declaration, we won't get any error because function declarations are hoisted. However, if we call addTwo() before the function expression declaration, we will get an error because only the variable declaration is hoisted, not the function assignment.
