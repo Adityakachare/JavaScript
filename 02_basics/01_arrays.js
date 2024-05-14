@@ -23,18 +23,18 @@ console.log(myArray[1]);
 // myArray.pop()
 // console.log(myArray);
 
-myArray.unshift(9)
+myArray.unshift(9) //This method in Arrays adds one or more elements in the array
 console.log(myArray);
 /*[
     9, 0, 1, 2,
     3, 4, 5
 ]*/
 
-myArray.shift()
-console.log(myArray);
+myArray.shift() //This method in Arrays removes first element from the array
+console.log("op",myArray); //[ 0, 1, 2, 3, 4, 5 ]
 
-console.log(myArray.includes(8));
-console.log(myArray.indexOf(3));
+console.log(myArray.includes(8)); //Will check if the array has the particular element in it
+console.log(myArray.indexOf(3)); //Will return the index of the specified number
 
 const newArray1 = myArray.join();
 console.log(myArray);

@@ -5,7 +5,7 @@ const accountId = 123
 let accountEmail = "aditya@gmail.com"
 var accountPwd = "12345"
 accountCity = "Thane" //This type of variable declaration is not encouraged
-let accountState;// If we declare a variable in JS and dont assign any value to it, JS automatically makes it undefined
+let accountState;// If we declare a variable in JS and don't assign any value to it, JS automatically makes it undefined
 /*
 const and let are the preferred keywords
 var is not used in JS due to the issue in Block and Functional scope

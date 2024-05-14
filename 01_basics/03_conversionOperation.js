@@ -1,30 +1,27 @@
 /******************** CONVERSION **************************/
 
-// let score = "33a"
+let score = "33a"
 
-// console.log(typeof score);
+console.log(typeof score); //string
 
-// let valueInNumber = Number(score)
+let valueInNumber = Number(score)
 
-// console.log(typeof valueInNumber);
-// console.log(valueInNumber);
-
-
-
-// let score = null
-
-// console.log(typeof score);
-
-// let valueInNumber = Number(score)
-
-// console.log(typeof valueInNumber);
-// console.log(valueInNumber);
+console.log(typeof valueInNumber); //number
+console.log(valueInNumber); //Nan
 
 
 
-// let score = undefined
+let score1 = null
+console.log(typeof score1); //object
 
-// console.log(typeof score);
+let valueInNumber1 = Number(score1)
+
+console.log(typeof valueInNumber1); //number
+console.log(valueInNumber1); //0
+
+
+let score2 = undefined
+console.log("Type of score2 is:",typeof score2); //undefined
 
 // let valueInNumber = Number(score)
 
@@ -33,25 +30,25 @@
 
 
 
-// let score = true
+let score3 = true
+console.log(typeof score3); //boolean
 
-// console.log(typeof score);
+let valueInNumber2 = Number(score)
 
-// let valueInNumber = Number(score)
-
-// console.log(typeof valueInNumber);
-// console.log(valueInNumber);
+console.log(typeof valueInNumber2); //number
+console.log(valueInNumber2); //Nan
 
 
 //"33" => 33
 //"33abc" => NaN(not a number) typeof NaN is number
 //true => 1; false =>0
 
-// let isLoggedIn = 9
-// let booleanIsLoggedIn = Boolean(isLoggedIn)
-// console.log(booleanIsLoggedIn);
-// 1 => true; 0 => false (any number other than 0 will be true)
-// "" => false; "<any word/string>" => true
+let isLoggedIn = 9
+console.log(typeof isLoggedIn); //number
+let booleanIsLoggedIn = Boolean(isLoggedIn)
+console.log(booleanIsLoggedIn);
+//1 => true; 0 => false (any number other than 0 will be true)
+//"" => false; "<any word/string>" => true
 
 // let stringV = 33
 // let convertedString = String(stringV)

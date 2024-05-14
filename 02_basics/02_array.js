@@ -1,14 +1,14 @@
 const marvelHeros = ["Thor", "IronMan", "SpiderMan"]
 const dcHeros = ["Batman", "Superman", "Flash"]
 
-// marvelHeros.push(dcHeros)
-// console.log(marvelHeros); 
+marvelHeros.push(dcHeros)
+console.log(marvelHeros); 
 /*
 [ 'Thor', 'IronMan', 'SpiderMan', [ 'Batman', 'Superman', 'Flash' ] ] - array inside array 
     1         2          3                          4
 */
-// console.log(marvelHeros[3]); //[ 'Batman', 'Superman', 'Flash' ]
-// console.log(marvelHeros[3][1]); // Superman
+console.log(marvelHeros[3]); //[ 'Batman', 'Superman', 'Flash' ]
+console.log(marvelHeros[3][1]); // Superman
 
 const allHeros = marvelHeros.concat(dcHeros)
 console.log(allHeros); //[ 'Thor', 'IronMan', 'SpiderMan', 'Batman', 'Superman', 'Flash' ]

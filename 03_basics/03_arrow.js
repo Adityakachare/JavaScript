@@ -2,7 +2,7 @@ const user = {
     username: "Aditya",
     price: 999,
     welcome: function(){
-        //console.log(`${this.username}, welcome to the website`);
+        console.log(`${this.username}, welcome to the website`);
         console.log(this); //This will print the current context or simply all the variables/values present in the scope
         //Output
         /*
@@ -21,7 +21,7 @@ console.log(this); //{}
 /*
 We are in the Node Environment which is why the current context will be empty or will point to an empty object.
 *********IMPORTANT**********
-But at the same time if we run the above statement on any brower it will return somethin like this: 
+But at the same time if we run the above statement on any brower it will return something like this: 
  //Window {0: Window, window: Window, self: Window, document: document, name: '', location: Location, …}
 Whenever the JS engine runs on the browser the global object present is the "window" object
 */
