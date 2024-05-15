@@ -29,7 +29,7 @@ function one(){
         const website = "YouTube"
         console.log(username);
     }
-    //console.log(website); //This line will give an error as function one() cannot access the varaibles of the inner function two()
+    //console.log(website); //This line will give an error as function one() cannot access the variables of the inner function two()
     two();
 }
 one()
