@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM</title>
+</head>
+<body style="background-color: #212121; color: #fff;">
+    <div class="parent">
+        <div class="day">Monday</div>
+        <div class="day">Tuesday</div>
+        <div class="day">Wednesday</div>
+        <div class="day">Thursday</div>
+    </div>
+</body>
+<script>
+    const parent = document.querySelector('.parent')
+    console.log(parent);
+    //OUTPUT
+    // <div class="parent">
+    //     <div class="day">Monday</div>
+    //     <div class="day">Tuesday</div>
+    //     <div class="day">Wednesday</div>
+    //     <div class="day">Thursday</div>
+    // </div>
+
+    console.log(parent.children); //Will give an HTMLCollection with all the values
+
+    //To Access the element in the HTMLCollection:
+    console.log(parent.children[0]); //<div class="day">Monday</div>
+    console.log(parent.children[0].innerHTML); //Monday
+
+    for (let i = 0; i < parent.children.length; i++) {
+        console.log(parent.children[i].innerHTML)
+    }
+    // Monday
+    // Tuesday
+    // Wednesday
+    // Thursday
+
+    //To change the styling of these elements:
+    parent.children[1].style.color = "orange"
+
+    //Other Properties:
+    console.log(parent.firstElementChild); //<div class="day">Monday</div>
+    console.log(parent.lastElementChild); //<div class="day">Thursday</div>
+
+    //The above steps were for accessing the children by using the parent
+    //Lets look at how can we move/ access the parent using the children
+
+    //NOTE: JavaScript's query selector methods (querySelector and querySelectorAll) use the DOM (Document Object Model) tree structure to traverse and find elements. Starting from the root or a specified element, they perform a depth-first search through the child nodes to locate matches for the provided CSS selectors. This systematic traversal ensures accurate element selection based on the hierarchical structure of the document.
+    //querySelector and querySelectorAll: these methods are heavy and time consuming as it traverses all nodes of the tree structure to find/ access a particular element, it can be a parent or a child.
+    //To optimize this process of accessing the parent without making the use of the child we can write the code as follows:
+    const dayOne = document.querySelector('.day')
+    console.log(dayOne);
+
+    console.log(dayOne.parentElement);// Here we are directly accessing the parent element by using the child class ".day"
+
+    //To access the next sibling, or basically the next element we need to write the following code:
+    console.log(dayOne.nextElementSibling);// Will return the next element along with all the stylings we have given to it if any.
+
+    //INTERESTING TOPIC:
+    console.log("NODES: ", parent.childNodes);
+    //Output:
+    // NODES:  NodeList(9) [text, div.day, text, div.day, text, div.day, text, div.day, text]
+    //Explaination: DOM itself is a complete tree structure, each and every element has its own significance. Even a line break(next line/enter) is considered as a node element. Browser creates a complex tress structures behind the scenes to process all the elements. This is the reason why we need to write an optimized js code.
+</script>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM: Node List Creation</title>
+</head>
+<body style="background-color: #212121; color: #fff;">
+        
+</body>
+<script>
+    //Creating an Element:
+    const div = document.createElement('div')
+    console.log(div); //<div></div>
+
+    //Adding properties to the created element:
+    div.className = 'main'
+    div.id = Math.round(Math.random()*10+1) // We can hardcode the value, math functions are used just for practicing purpose.
+
+    //Custom attributes:
+    div.setAttribute('title', "newTitle")
+
+    //Styling:
+    div.style.backgroundColor = "red"
+    div.style.padding = "10px"
+
+    //To give text in the div:
+    //div.innerText = "DOM Manipualtion" //This method is not that optimized therefore we will use the follwing code:
+
+    const addText = document.createTextNode("DOM Manipulation")
+    div.appendChild(addText) //adding the content in the div
+
+    //This div will not be visible on the web page, we can see the changes only in the console of the browser
+    document.body.appendChild(div)
+
+    </script>
+</html>
