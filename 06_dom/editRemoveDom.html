@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit and Remove</title>
+</head>
+<body style="background-color: #212121; color: #fff;">
+    <ul class="language">
+        <li>JavaScript</li>
+    </ul>
+</body>
+<script>
+    function addLanguageToList(langName){
+        // Create a new <li> element
+        const li = document.createElement('li')
+        // Set the inner HTML of the <li> element to the value of langName
+        li.innerHTML = `${langName}`
+        // Append the <li> element to the element with the class 'language'
+        document.querySelector('.language').appendChild(li)
+    }
+
+    addLanguageToList("python")
+    addLanguageToList("typescript")
+
+    //The issue in the above code is optimzation. In the above scenario we have very less values in the original list which is why we dont have any problem of traversing the whole DOM structure. But in cases where there are thousands or lakhs of records then the time needed to traverse it is lot more which is not the most optimal solution. As whenever we are calling the function "addLanguageToList", each time the tree is traversed which will lead to optimization issues in large scale projects.
+
+    //The optimized way using DSA:
+    function addOptiLang(langName){
+        const li = document.createElement('li')
+        li.appendChild(document.createTextNode(langName))
+        document.querySelector('.language').appendChild(li)
+    }
+    addOptiLang('golang')
+
+    //This method is more optimized because instead of using innerHTML, which can be less efficient, we create the <li> element and directly inject the text node into it using the appendChild method.This approach avoids the need to parse HTML and traverse the entire DOM tree for adding an element, leading to better performance, especially in large-scale projects with many elements.
+
+    //EDITING THE VALUES: 3 methods:
+    //1. Using innerHTML
+    //2. Using textContent
+    //3. Using outerHTML
+    const secondLang = document.querySelector("li:nth-child(2)")
+    //secondLang.innerHTML = "MOJO" //This method will surely work but with the same issue of not being optimized as the whole DOM tree is being traversed.
+
+    const newLi = document.createElement('li')
+    newLi.textContent = "Mojo" //Works similar to innerHTML
+    secondLang.replaceWith(newLi)
+
+    const firstLang = document.querySelector("li:first-child")
+    firstLang.outerHTML = "<li>TYPESCRIPT</li>"
+
+    //REMOVING ELEMENTS:
+    const lastLang = document.querySelector('li:last-child')
+    lastLang.remove()
+</script>
+</html>
