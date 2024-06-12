@@ -1,32 +1,138 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HTML EVENTS</title>
 </head>
-<body>
-    <body style="background-color: #414141; color: aliceblue;">
-        <h2>Amazing image</h2>
-        <div >
-            <ul id="images">
-                <li><img width="200px" id="photoshop" src="https://images.pexels.com/photos/3561339/pexels-photo-3561339.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="photoshop"></li>
-                <li><img width="200px" id="japan" src="https://images.pexels.com/photos/3532553/pexels-photo-3532553.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
-                <li><img width="200px" id="river" src="https://images.pexels.com/photos/3532551/pexels-photo-3532551.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
-                <li><img width="200px" id="owl" src="https://images.pexels.com/photos/3532552/pexels-photo-3532552.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="" ></li>
-                <li><img width="200px" id="prayer" src="https://images.pexels.com/photos/2522671/pexels-photo-2522671.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
-                <li><a style="color: aliceblue;" href="https://google.com" id="google">Google</a></li>
-            </ul>
-       </div>
-    </body>
+
+
+
+<body style="background-color: #414141; color: aliceblue;">
+    <h2>Amazing image</h2>
+    <div>
+        <ul id="images">
+            <li><img width="200px" id="photoshop"
+                    src="https://images.pexels.com/photos/3561339/pexels-photo-3561339.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+                    alt="photoshop"></li>
+            <li><img width="200px" id="japan"
+                    src="https://images.pexels.com/photos/3532553/pexels-photo-3532553.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+                    alt=""></li>
+            <li><img width="200px" id="river"
+                    src="https://images.pexels.com/photos/3532551/pexels-photo-3532551.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+                    alt=""></li>
+            <li><img width="200px" id="owl"
+                    src="https://images.pexels.com/photos/3532552/pexels-photo-3532552.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+                    alt=""></li>
+            <li><img width="200px" id="prayer"
+                    src="https://images.pexels.com/photos/2522671/pexels-photo-2522671.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+                    alt=""></li>
+            <li><a style="color: aliceblue;" href="https://google.com" id="google">Google</a></li>
+        </ul>
+    </div>
 </body>
+
 <script>
     //All events in JavaScript always run sequentially. Yess there are some exceptions. We can avoid this sequential behaviour of JS by using asynchronous method.
 
     //Note: Injecting the events directly into the HTML code is not recommended. This will create a problem with the project scalability.
     //Better approach:
-    document.getElementById('owl').onclick = function(){
-        alert('Image Clicked')
+    document.getElementById('owl').onclick = function () {
+        alert('Image Clicked');
     }
+    //This method surely is the better approach but not the best as using only the onClick function we dont get any other features which we can achieve using the event listeners. Event listeners also give us the ability of PROPOGATION.
+
+    //BEST approach: 
+    //Note: The third parameter is true or false, by default it is set to false. There will be some cases where these parameters have to be used compulsorily.
+    document.getElementById('owl').addEventListener('click', function () {
+        alert('owl Clicked')
+    })
+
+    //Other methods:
+    /*
+    attachEvent()
+    jQuery - on
+    */
+
+    document.getElementById('owl').addEventListener('click', function (e) {
+        console.log(e); //We will get all the information of the event like the timeStamp, x axis, y axis and many more in the "PointerEvent"
+        //This can be used to solve many simple problems such as creating some element(circle) at the place where the user is clicking or return the time at which the user clicked on the screen etc.
+    })
+    //Events:
+    //Type, timestamp, defaultPrevented, target, toElement, srcElement, currentTarget, clientX, clientY, screenX, screenY, altKey, ctrlKey, shiftKey, keyCode
+
+    //EVENT PROPOGATION:
+    //Event propogation has 2 contexts: 1. Event Bubbling and 2. Event Capturing
+    //By default we use Event bubbling(false) but in some cases we need to use Event Capturing, we can understand this concept using the following example:
+    //1. Event Bubbling:
+    document.getElementById('images').addEventListener('click', function (e) {
+        console.log("Clicked inside the ul");
+    }, false)
+    document.getElementById('owl').addEventListener('click', function (e) {
+        console.log("owl clicked");
+    }, false)
+    //The 3rd parameter is kept as false, even if we dont add false explicitly, by default the value is set as false
+    //In this case the question is which console.log will be printed first when we click the owl image. Here we get the output as: 
+    /*
+    owl clicked
+    Clicked inside the ul
+    */
+    //Here we can observe the concept of bubbling up. Similar to an actual bubble which goes upwards, the flow of the program also goes upwards. In this case individual images will be targetted first then all the images in the ul(from inside to outside)
+
+    //2. Event Capturing
+    document.getElementById('images').addEventListener('click', function (e) {
+        console.log("Clicked inside the ul");
+    }, true)
+    document.getElementById('owl').addEventListener('click', function (e) {
+        console.log("owl clicked");
+    }, true)
+    //Here we get the output as:
+    /*
+    Clicked inside the ul
+    owl clicked
+    */
+
+    //Now suppose we want to stop the process of event propogation, like for example we dont want the script written for the outer element to run when an another element is clicked or any other event listener is applied the we can make use of stopPropogation() as shown below:
+    document.getElementById('images').addEventListener('click', function (e) {
+        console.log("Clicked inside the ul");
+    }, true)
+    document.getElementById('owl').addEventListener('click', function (e) {
+        console.log("owl clicked");
+        e.stopPropagation()
+    }, true)
+    //Here the output will only have the log as "owl clicked" if we click on the image of the owl.
+
+    //To avoid the default behaviour of some element: Dont redirect to the google link even if the user clicks it, and also stop from bubbling:
+    document.getElementById('google').addEventListener('click', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        console.log("Link clicked");
+    }, false)
+
+
+    //Lets work on an actual problem: whenever the user clicks on any of the image, directly remove it
+    document.querySelector('#images').addEventListener('click', function (e) {
+        console.log(e.target.parentNode); //parentNode is added because the main motive is to remove the whole element and not only the image. If we dont use it only the image will be removed and the li element will stay which is not desired in our case.
+        let removeIt = e.target.parentNode;
+        console.log(removeIt);
+        //Method 1
+        removeIt.remove();
+
+        //Method 2
+        removeIt.parentNode.removeChild(removeIt) //removeIt.parentNode will give the ul, .removeChild will give the li and finally (removeIt) will specify exactly which li/child the user wants to remove
+    }, false)
+    //The issue in the above code is: if we click on anything else than the image itself the whole ul is deleted as we are accessing the ul which is the parent when we click on the li or the link directly by using the parentNode to avoid this we can make use of some strict check as follow:
+    //We can make use of another property called as tagname:
+    document.querySelector('#images').addEventListener('click', function (e) {
+        console.log(e.target.tagName); //If we click on the image we will get "IMG" if clicked on any li we get "LI" and so on.
+        if (e.target.tagName === 'IMG') {
+            console.log(e.target.id); //Will print the id of the element on which we click
+            let removeIt = e.target.parentNode;
+            removeIt.remove();
+        }
+        //This code will make sure that only the image is being removed when we click it and not other elements.
+    }, false)
 </script>
+
 </html>
