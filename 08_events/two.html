@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>ASYNC</h1>
+    <button id="stop">Stop</button>
+</body>
+<script>
+    //Async Functions: 
+    //1. setTimeout: also calls an API, accepts an handler which just a simple callback or a function without a name and a timeout. This method will work only once. Once the work is done it will stop executing
+    /*
+    setTimeout(function () {
+        console.log("Aditya");
+    }, 2000)
+    */
+
+    //2. setInterval: This is similar to setTimeout, but instead of executing the task once this function will executed repeatedly after certain intervals mentioned by us.
+    /*
+    setInterval(function () {
+        console.log("aditya");
+    }, 1000) 
+    */
+
+    //Working with function references:
+    const sayMyName = function () {
+        console.log("Aditya");
+    }
+    setTimeout(sayMyName, 1000)
+
+    //Changing HTML using the above functions
+    const changeText = function () {
+        document.querySelector('h1').innerHTML = "Changed using the Timeout method"
+
+    }
+    const changeMe = setTimeout(changeText, 2000);
+
+    //There may be some situations where we need to stop that particular event before the timeout function. We can make use of clearTimeout() method. It needs a refernce for which we need to stop the timeout
+
+    document.querySelector('#stop').addEventListener('click', function (e) {
+        clearTimeout(changeMe)
+        console.log("STOP");
+    })
+    //The event will be stopped on the button press
+
+
+    //SET INTERVAL will be discussed in three.html
+</script>
+
+</html>

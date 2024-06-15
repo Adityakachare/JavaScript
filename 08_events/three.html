@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Async Practice</title>
+</head>
+
+<body>
+    <h1>Async Function</h1>
+    <button id="start">Start</button>
+    <button id="stop">Stop</button>
+</body>
+<script>
+    /* const printDate = () => {
+         console.log("Aditya", Date.now());
+     }
+     setInterval(printDate, 1000);
+ */
+    //Extra parameters:
+    const printDate1 = (str) => {
+        console.log(str, Date.now());
+    }
+    const interval = setInterval(printDate1, 1000, "Aditya");
+
+
+    clearInterval(interval)
+
+    //Start the interval on clicking on Start and stop when clicked on stop
+    const printDate2 = (str) => {
+        console.log(str, Date.now());
+    }
+    let interval1
+
+    document.querySelector('#start').addEventListener('click', function () {
+        interval1 = setInterval(printDate1, 100, "DATE");
+
+    })
+
+    document.querySelector('#stop').addEventListener('click', function () {
+        clearInterval(interval1)
+    })
+
+</script>
+
+</html>

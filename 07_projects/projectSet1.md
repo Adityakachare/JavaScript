@@ -1,52 +1,55 @@
 # Projects related to DOM
 
 ## Project link:
+
 [StackBlitz Link](https://stackblitz.com/edit/stackblitz-starters-ph2tdr?description=HTML/CSS/JS%20Starter&file=1-ColorSwitcher%2Findex.html,1-ColorSwitcher%2Fstyle.css,1-ColorSwitcher%2Fscript.js&terminalHeight=10&title=Static%20Starter)
 
 # Solution Code:
+
 ## Project - 1:
+
 ```javascript
-const allButtons = document.querySelectorAll('.button');
+const allButtons = document.querySelectorAll(".button");
 //console.log(allButtons);
-const body = document.querySelector('body');
+const body = document.querySelector("body");
 
 allButtons.forEach(function (button) {
   //console.log(button);
-  button.addEventListener('click', function (event) {
+  button.addEventListener("click", function (event) {
     console.log(event);
     console.log(event.target);
 
-    if (event.target.id === 'grey') {
+    if (event.target.id === "grey") {
       body.style.backgroundColor = event.target.id;
-    } else if (event.target.id === 'red') {
+    } else if (event.target.id === "red") {
       body.style.backgroundColor = event.target.id;
-    } else if (event.target.id === 'blue') {
+    } else if (event.target.id === "blue") {
       body.style.backgroundColor = event.target.id;
-    } else if (event.target.id === 'green') {
+    } else if (event.target.id === "green") {
       body.style.backgroundColor = event.target.id;
-    } else if (event.target.id === 'yellow') {
+    } else if (event.target.id === "yellow") {
       body.style.backgroundColor = event.target.id;
     }
   });
 });
-
 ```
 
 ## Project - 2:
+
 ```javascript
-const form = document.querySelector('form');
+const form = document.querySelector("form");
 
 //const height = parseInt(document.querySelector('#height').value); //This will give you empty values
-form.addEventListener('submit', function (e) {
+form.addEventListener("submit", function (e) {
   e.preventDefault();
 
-  const height = parseInt(document.querySelector('#height').value);
+  const height = parseInt(document.querySelector("#height").value);
   //console.log(height);
-  const weight = parseInt(document.querySelector('#weight').value);
-  const results = document.querySelector('#results');
-  if (height === '' || height < 0 || isNaN(height)) {
+  const weight = parseInt(document.querySelector("#weight").value);
+  const results = document.querySelector("#results");
+  if (height === "" || height < 0 || isNaN(height)) {
     results.innerHTML = `ENTER VALID HEIGHT ${height}`;
-  } else if (weight === '' || weight < 0 || isNaN(weight)) {
+  } else if (weight === "" || weight < 0 || isNaN(weight)) {
     results.innerHTML = `ENTER VALID WEIGHT ${weight}`;
   } else {
     const bmi = (weight / ((height * height) / 10000)).toFixed(2);
@@ -61,40 +64,40 @@ form.addEventListener('submit', function (e) {
     }
   }
 });
-
 ```
 
 ## Project - 3:
+
 ```javascript
-const clock = document.getElementById('clock');
+const clock = document.getElementById("clock");
 
 setInterval(function () {
   let date = new Date();
   //console.log(date.toLocaleTimeString());
   clock.innerHTML = date.toLocaleTimeString();
 }, 1000);
-
 ```
 
 ## Project - 4:
+
 ```javascript
 let randoNumber = parseInt(Math.random() * 100 + 1);
 
-const submit = document.querySelector('#subt');
-const userInput = document.querySelector('#guessField');
-const guessSlot = document.querySelector('.guesses');
-const remaining = document.querySelector('.lastResult');
-const lowOrHigh = document.querySelector('.lowOrHi');
-const startOver = document.querySelector('.resultParas');
+const submit = document.querySelector("#subt");
+const userInput = document.querySelector("#guessField");
+const guessSlot = document.querySelector(".guesses");
+const remaining = document.querySelector(".lastResult");
+const lowOrHigh = document.querySelector(".lowOrHi");
+const startOver = document.querySelector(".resultParas");
 
-const p = document.createElement('p');
+const p = document.createElement("p");
 
 let prevGuess = [];
 let numGuess = 1;
 let playGame = true;
 
 if (playGame) {
-  submit.addEventListener('click', function (e) {
+  submit.addEventListener("click", function (e) {
     e.preventDefault();
     const guess = parseInt(userInput.value);
     //console.log(guess);
@@ -105,11 +108,11 @@ if (playGame) {
 function validateGuess(guess) {
   //This function will handle the validation of guesses, whether the guess is between 1 to 100
   if (isNaN(guess)) {
-    alert('Enter a valid number!');
+    alert("Enter a valid number!");
   } else if (guess < 1) {
-    alert('Enter a number greater than 1!');
+    alert("Enter a number greater than 1!");
   } else if (guess > 100) {
-    alert('Enter a number smaller than 100!');
+    alert("Enter a number smaller than 100!");
   } else {
     prevGuess.push(guess);
     if (numGuess === 11) {
@@ -126,18 +129,18 @@ function validateGuess(guess) {
 function checkGuess(guess) {
   //Will check the guessed value, if the guessed value is same then appropriate message will be displayed if the guess is low or high then respective message is printed
   if (guess === randoNumber) {
-    displayMessage('You guessed it right!');
+    displayMessage("You guessed it right!");
     endGame();
   } else if (guess < randoNumber) {
-    displayMessage('Number is too low!');
+    displayMessage("Number is too low!");
   } else if (guess > randoNumber) {
-    displayMessage('Number is too high!');
+    displayMessage("Number is too high!");
   }
 }
 
 function displayGuess(guess) {
   //Will work for updating the values of the array
-  userInput.value = '';
+  userInput.value = "";
   guessSlot.innerHTML += `${guess}  `;
   numGuess++;
   remaining.innerHTML = `${11 - numGuess}`;
@@ -149,9 +152,9 @@ function displayMessage(message) {
 }
 
 function endGame() {
-  userInput.value = '';
-  userInput.setAttribute('disabled', '');
-  p.classList.add('button');
+  userInput.value = "";
+  userInput.setAttribute("disabled", "");
+  p.classList.add("button");
   p.innerHTML = `<h2 id="newGame">Start new Game</h2>`;
   startOver.appendChild(p);
   playGame = false;
@@ -159,17 +162,77 @@ function endGame() {
 }
 
 function newGame() {
-  const newGameButton = document.querySelector('#newGame');
-  newGameButton.addEventListener('click', function (e) {
+  const newGameButton = document.querySelector("#newGame");
+  newGameButton.addEventListener("click", function (e) {
     randoNumber = parseInt(Math.random() * 100 + 1);
     prevGuess = [];
     numGuess = 1;
-    guessSlot.innerHTML = '';
+    guessSlot.innerHTML = "";
     remaining.innerHTML = `${11 - numGuess}`;
-    userInput.removeAttribute('disabled');
+    userInput.removeAttribute("disabled");
     startOver.removeChild(p);
     playGame = true;
   });
 }
+```
 
+## Project - 5
+
+```javascript
+const insert = document.getElementById("insert");
+
+window.addEventListener("keydown", (e) => {
+  insert.innerHTML = `
+  <div class='color'>
+  <table>
+  <tr>
+    <th>Key</th>
+    <th>Key Code</th>
+    <th>Code</th>
+  </tr>
+  <tr>
+    <td>${e.key === " " ? "SPACE" : e.key}</td>
+    <td>${e.keyCode}</td>
+    <td>${e.code}</td>
+  </tr>
+ 
+</table>
+  </div>
+  `;
+});
+```
+
+## Project - 6
+
+```javascript
+//Generating random color
+
+const randomColor = function () {
+  const hex = "0123456789ABCDEF"; //The hex values from which we will be extracting the values for our background color
+  let color = "#";
+  for (let i = 0; i < 6; i++) {
+    color += hex[Math.floor(Math.random() * 16)];
+    //Math.floor(Math.random() * 16): will generate a random integer which is taken as the index from the string in "hex", this is done 6 times by the for loop to generate a hex value for the respective color.
+    // Hexadecimal (hex) values are based on 16, which is why we multiply Math.random() by 16 to get a value between 0 and 15.
+    //+= is used to add the values constantly in the variable
+  }
+  return color;
+};
+//console.log(randomColor());
+let intervalId;
+const startChangingColor = () => {
+  function changeBg() {
+    document.body.style.backgroundColor = randomColor();
+  }
+  if (!intervalId) {
+    //This check is done to check if the value of the variable in null, if the value is null only then the setInterval() will execute
+    intervalId = setInterval(changeBg, 1000);
+  }
+};
+const stopChangingColor = () => {
+  clearInterval(intervalId);
+  intervalId = null; // to clean the memory
+};
+document.querySelector("#start").addEventListener("click", startChangingColor);
+document.querySelector("#stop").addEventListener("click", stopChangingColor);
 ```
