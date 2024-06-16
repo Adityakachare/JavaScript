@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Request</title>
+</head>
+
+<body style="background-color: #212121; color: aliceblue;">
+    <pre style="font-size: 30px;">
+        0 UNSENT Client has been created. open() not called yet.
+        1 OPENED open() has been called.
+        2 HEADERS_RECEIVED send() has been called, and headers and status are available.
+        3 LOADING Downloading; responseText holds partial data.
+        4 DONE The operation is complete.
+    </pre>
+
+</body>
+<script>
+    /*
+    XMLHttpRequest() is a method which has all the ready state, using this we can send and receive data.
+    */
+
+    const reqURL = 'https://api.github.com/users/adityakachare'
+    const xhr = new XMLHttpRequest() //Creating a new object
+    xhr.open('GET', reqURL) //open() is responsible for sending the requests. Accepts 2 parameters, one is the method and the second is the string. Method specifies which type of request we want to send(GET, POST, PUT etc). And the string will have the data, it can be hardcoded or we can pass a variable in it.
+    //console.log("HERE");
+    xhr.onreadystatechange = function () { //onreadystatechange will help to monitor the state change
+        console.log(xhr.readyState);
+        if (xhr.readyState === 4) { //This if condition will detect the state. It will check if the 4th state is achieved and then we can perform any other operation, here we have printed the followers.
+            const data = JSON.parse(this.responseText);// Will return the data but we need to parse it in JSON as by default it is in string due to which it will be difficult to access the data.
+            console.log(typeof data);//String
+            console.log(data.followers);
+        }
+    }
+
+    xhr.send() //This is the method which actually call the open method. Whenever we send the request, the status codes change continuously.
+
+
+    //CONSOLE
+    /*
+    console, document and many other APIs are not the part of core JS. Core JS only has some basic arithmetic operations, function exection loops.
+    console.log() is basically just a debugging tool provided by the browser.
+    */
+</script>
+
+</html>
