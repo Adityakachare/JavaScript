@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React</title>
+</head>
+
+<body>
+    <button>Button Clicked</button>
+</body>
+<script>
+    class React {
+        constructor() {
+            this.library = "React"
+            this.server = "https://localhost:3000/"
+
+            // Requirement: as soon as the page loads, an object should be created of the React class
+            // Adding event listener to the button with proper context binding
+            document.querySelector('button').addEventListener('click', this.handleClick.bind(this)) // using bind(this) ensures the correct context of 'this'
+        }
+        handleClick() {
+            console.log("Button is clicked");
+            console.log(this.server); // With bind(this), 'this' refers to the class instance, so this will log the server URL
+            console.log(this); // With bind(this), 'this' refers to the class instance, not the button element
+        }
+    }
+    const app = new React(); // Create an instance of the React class as soon as the page loads
+</script>
+
+</html>
