@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Closure</title>
+</head>
+
+<body style="background-color: #313131; color: aliceblue;">
+    <h1>hi</h1>
+</body>
+<script>
+    //A closure is the combination of a function bundled together (enclosed) with references to its surrounding state (the lexical environment). In other words, a closure gives you access to an outer function's scope from an inner function. In JavaScript, closures are created every time a function is created, at function creation time.
+
+    function init() {
+        let name = "Mozilla";
+        function displayName() {
+            console.log(name);
+        }
+        displayName();
+    }
+    init();
+
+
+    //Understanding the concept:
+    /*
+    the variables declared in the function are not available in the outer space. 
+    We have a Global Execution Context, when a function is defined a separate execution context is made, if an another function is defined it also has a separate execution context.
+    With no error while accessing the username variable from the outer function we can observe that the two functions share memory.
+    All the inner functions(irrespective of the number of inner functions) will have the access to the variables and properties of the outer function. 
+
+    All the inner function have access to the properties of outer function but one inner function does not have access to the properties of another inner function
+
+    Also the outer function does not have access to the properties of the inner function
+    */
+    function outer() {
+        let username = "Aditya"
+        console.log("Outer: ", secret);
+        function inner() {
+            let secret = "213";
+            console.log("Inner", username);
+        }
+        function innerTwo() {
+            console.log("Inner Two", username);
+            //console.log("Secret Message:", secret); //secret is not defined
+
+        }
+        inner();
+        innerTwo();
+    }
+    outer();
+    console.log("Outer", username);
+
+</script>
+
+</html>
