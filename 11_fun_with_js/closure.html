@@ -8,7 +8,9 @@
 </head>
 
 <body style="background-color: #313131; color: aliceblue;">
-    <h1>hi</h1>
+    <h1>HI</h1>
+    <button id="orange">Orange</button>
+    <button id="green">Green</button>
 </body>
 <script>
     //A closure is the combination of a function bundled together (enclosed) with references to its surrounding state (the lexical environment). In other words, a closure gives you access to an outer function's scope from an inner function. In JavaScript, closures are created every time a function is created, at function creation time.
@@ -52,6 +54,43 @@
     outer();
     console.log("Outer", username);
 
+    /*
+    CLOSURE: We will understand this concept using the following example where instead of calling the function directly we are returning the reference of the function
+    When displayName is passed, not only the method but the scope of the outer function if it exists is passed. This is due to lexical scoping.
+    Not only the executional context but also the memory is shared which is why this is possible.
+    So in conclusion we can say that when we try to pass an entire function then not only function itself but also its scope which is the lexical scope is passed.
+    */
+    function makeFunc() {
+        const name = "Mozilla";
+        function displayName() {
+            console.log(name);
+        }
+        return displayName;
+    }
+
+    const myFunc = makeFunc();
+    myFunc();
+
+</script>
+<script>
+    //Practical Example
+    document.getElementById("orange").onclick = function () {
+        document.body.style.backgroundColor = "orange"
+    }
+    document.getElementById("green").onclick = function () {
+        document.body.style.backgroundColor = "green"
+    }
+    //We successfully changed the bg color on the click of the button but if there were more number of buttons, this would be a repeated task and take our precious time. to avoid this we can use the following logic:
+
+    function clickHandler(color) {
+        //document.body.style.backgroundColor = `${color}` //doesnt work
+
+        return function () {
+            document.body.style.backgroundColor = `${color}`
+        }
+    }
+    //This example uses closures to change the background color when buttons are clicked.The `clickHandler` function takes a `color` parameter and returns a new function that sets the background color.By assigning`document.getElementById('orange').onclick = clickHandler("orange")`, the returned function from `clickHandler` retains access to the `color` parameter due to closure.This ensures the correct color is used when the button is clicked, avoiding repeated code and potential errors from directly setting the background color without closure.
+    //document.getElementById('orange').onclick = clickHandler("orange")
 </script>
 
 </html>
